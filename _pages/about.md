@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href="https://www.ncsu.edu/">North Carolina State University</a> · AI-Assisted Learning Lab
+subtitle: <a href="https://www.ncsu.edu/">North Carolina State University</a> · <a href="https://sites.google.com/ncsu.edu/aial">AI-Assisted Learning Lab</a>
 
 profile:
   align: right
@@ -24,7 +24,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a PhD student in Computer Science at North Carolina State University, advised by Dr. Bita Akram in the AI-Assisted Learning Lab. My research lies at the intersection of human-AI interaction and user modeling. I study how people learn, make decisions, and respond to AI assistance, and how behavioral and interaction data can inform computational models of human knowledge and understanding.
+I am a PhD student in Computer Science at North Carolina State University, advised by Dr. Bita Akram in the [AI-Assisted Learning Lab](https://sites.google.com/ncsu.edu/aial). My research lies at the intersection of human-AI interaction and user modeling. I study how people learn, make decisions, and respond to AI assistance, and how behavioral and interaction data can inform computational models of human knowledge and understanding.
 
 My work spans computational approaches to learner modeling, human-AI trust and reliance, and personalized educational assistance. This includes research on discovering knowledge components through representation learning, as well as generating and recommending personalized learning content. More broadly, I am interested in learning representations of human knowledge and behavior to develop adaptive intelligent systems that better respond to individual capabilities and needs.
 
