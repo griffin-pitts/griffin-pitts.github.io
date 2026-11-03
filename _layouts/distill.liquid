@@ -52,7 +52,7 @@
     </script>
   </d-front-matter>
 
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% if site.footer_fixed == false or site.footer_enabled == false %}sticky-bottom-footer{% endif %}">
     <!-- Header -->
     {% include header.liquid %}
 
@@ -123,7 +123,9 @@
     </div>
 
     <!-- Footer -->
-    {% include footer.liquid %}
+    {% unless site.footer_enabled == false %}
+      {% include footer.liquid %}
+    {% endunless %}
 
     <!-- JavaScripts -->
     {% include distill_scripts.liquid %}

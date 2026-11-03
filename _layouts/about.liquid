@@ -27,10 +27,14 @@ layout: default
           {% endif %}
           {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
       30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
+          <img
+            src="{{ profile_image_path | relative_url | bust_file_cache }}"
+            class="{{ profile_image_class }}"
+            width="100%"
+            height="auto"
+            alt="{{ page.profile.alt | default: page.profile.image | escape }}"
+            loading="eager"
+          >
         {% endif %}
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
@@ -40,10 +44,11 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
-    <!-- News -->
+    <!-- Updates -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+      <h2 class="updates-heading">
+        <i class="fa-solid fa-bullhorn" aria-hidden="true"></i>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">Recent Updates</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
@@ -51,7 +56,7 @@ layout: default
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
       <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
@@ -59,7 +64,7 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}

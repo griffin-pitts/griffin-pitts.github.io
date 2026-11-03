@@ -1,6 +1,20 @@
 ---
 ---
-<div class="row">
+{%- assign pub_type = 'conference' -%}
+{%- if entry.pub_type -%}
+  {%- assign pub_type = entry.pub_type -%}
+{%- elsif entry.abbr == 'arXiv' -%}
+  {%- assign pub_type = 'preprint' -%}
+{%- elsif entry.type == 'article' and entry.journal contains 'Proceedings' -%}
+  {%- assign pub_type = 'conference' -%}
+{%- elsif entry.type == 'article' -%}
+  {%- assign pub_type = 'journal' -%}
+{%- elsif entry.booktitle contains 'Workshop' -%}
+  {%- assign pub_type = 'workshop' -%}
+{%- elsif entry.booktitle contains 'Poster' -%}
+  {%- assign pub_type = 'poster' -%}
+{%- endif -%}
+<div class="row" data-pub-type="{{ pub_type }}">
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
@@ -184,6 +198,9 @@
     <div class="periodical">
       {{ entry.note | strip }}
     </div>
+    {% if page.permalink == '/' and entry.home_summary %}
+      <p class="publication-summary">{{ entry.home_summary }}</p>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
@@ -318,25 +335,17 @@
               role="button"
             >
               {% assign citation_count = 0 %}
-              {% assign scholar_id_key = site.scholar_userid | append: ':' | append: entry.google_scholar_id %}
+              {% assign scholar_id_key = site.data.socials.scholar_userid | append: ':' | append: entry.google_scholar_id %}
               {% assign publication_key = entry.google_scholar_id %}
 
               {% if site.data.citations.papers[scholar_id_key] %}
                 {% assign citation_count = site.data.citations.papers[scholar_id_key].citations %}
               {% elsif site.data.citations.papers[publication_key] %}
                 {% assign citation_count = site.data.citations.papers[publication_key].citations %}
-              {% else %}
-                {% for paper in site.data.citations.papers %}
-                  {% assign paper_key = paper[0] %}
-                  {% if paper_key contains entry.google_scholar_id %}
-                    {% assign citation_count = paper[1].citations %}
-                    {% break %}
-                  {% endif %}
-                {% endfor %}
               {% endif %}
 
               <img
-                src="https://img.shields.io/badge/scholar-{{ citation_count }}-4285F4?logo=googlescholar&labelColor=beige"
+                src="https://img.shields.io/badge/scholar-{{ citation_count }}-2563eb?logo=googlescholar&logoColor=1d4ed8&labelColor=dbeafe"
                 alt="{{ citation_count }} Google Scholar citations"
               >
             </a>

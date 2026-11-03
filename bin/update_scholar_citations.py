@@ -40,6 +40,7 @@ def get_scholar_citations() -> None:
     """Fetch and update Google Scholar citation data."""
     print(f"Fetching citations for Google Scholar ID: {SCHOLAR_USER_ID}")
     today = datetime.now().strftime("%Y-%m-%d")
+    existing_data = {}
 
     # Check if the output file was already updated today
     if os.path.exists(OUTPUT_FILE):
@@ -83,6 +84,9 @@ def get_scholar_citations() -> None:
         print(f"No publications found in author data for user ID '{SCHOLAR_USER_ID}'.")
         sys.exit(1)
 
+    if author_data.get("citedby") is not None:
+        citation_data["metadata"]["total_citations"] = author_data["citedby"]
+
     for pub in author_data["publications"]:
         try:
             pub_id = pub.get("pub_id") or pub.get("author_pub_id")
@@ -109,7 +113,11 @@ def get_scholar_citations() -> None:
             )
 
     # Compare new data with existing data
-    if existing_data and existing_data.get("papers") == citation_data["papers"]:
+    if (
+        existing_data
+        and existing_data.get("papers") == citation_data["papers"]
+        and existing_data.get("metadata", {}).get("total_citations") == citation_data["metadata"].get("total_citations")
+    ):
         print("No changes in citation data. Skipping file update.")
         return
 

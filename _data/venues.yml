@@ -1,9 +1,45 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+# Venue badges shown next to publications. Keys must match the `abbr` field in _bibliography/papers.bib.
+# Each venue uses a different shade of blue.
 
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
-  color: "#009f36"
+"SIGCSE":
+  url: https://sigcse.org/
+  color: "#1e40af"
+"AIED":
+  url: https://iaied.org/
+  color: "#1e3a8a"
+"L@S":
+  url: https://learningatscale.acm.org/
+  color: "#0369a1"
+"EDM":
+  url: https://educationaldatamining.org/
+  color: "#1d4ed8"
+"CSEDM":
+  url: https://educationaldatamining.org/
+  color: "#2563eb"
+"ASEE":
+  url: https://www.asee.org/
+  color: "#0c4a6e"
+"HCII":
+  url: https://www.hci.international/
+  color: "#3730a3"
+"FIE":
+  url: https://www.fie-conference.org/
+  color: "#075985"
+"EMNLP":
+  url: https://aclanthology.org/
+  color: "#4338ca"
+"HF":
+  url: https://journals.sagepub.com/home/hfs
+  color: "#172554"
+"HFES":
+  url: https://www.hfes.org/
+  color: "#1e3a5f"
+"IJHCI":
+  url: https://www.tandfonline.com/journals/hihc20
+  color: "#0f4c81"
+"TELER":
+  url: https://www.sciencedirect.com/journal/telematics-and-informatics-reports
+  color: "#155e75"
+"arXiv":
+  url: https://arxiv.org/
+  color: "#475f8c"

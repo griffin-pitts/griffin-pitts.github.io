@@ -68,6 +68,17 @@
       {% endif %}
     {% when 'scholar_userid' %}
       <a href="https://scholar.google.com/citations?user={{ social[1] }}" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+      {% assign scholar_total = site.data.citations.metadata.total_citations %}
+      {% if include.show_scholar_count and scholar_total %}
+        <a
+          class="scholar-count-link"
+          href="https://scholar.google.com/citations?user={{ social[1] }}"
+          title="Google Scholar: {{ scholar_total }} citations"
+          ><img
+            src="https://img.shields.io/badge/scholar-{{ scholar_total }}-2563eb?logo=googlescholar&logoColor=1d4ed8&labelColor=dbeafe"
+            alt="Google Scholar: {{ scholar_total }} citations"
+        ></a>
+      {% endif %}
     {% when 'scopus_id' %}
       <a href="https://www.scopus.com/authid/detail.uri?authorId={{ social[1] }}" title="Scopus"><i class="ai ai-scopus"></i></a>
     {% when 'semanticscholar_id' %}
